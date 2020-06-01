@@ -1,0 +1,47 @@
+# Tomcat
+server:
+  port: 8071
+  tomcat:
+    uri-encoding: UTF-8
+
+  #servlet:
+    #context-path: /recv
+
+spring:
+  datasource:
+    name: test
+    url: jdbc:mysql://localhost:3306/recv?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8&useSSL=false&autoReconnect=true&failOverReadOnly=false
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  #thymeleaf的配置
+  thymeleaf:
+    #模板的模式，支持HTML、XML、TEXT、JAVASCRTPT等
+    mode: HTML5
+    #编码，可不用配置
+    encoding: UTF-8
+    #内容类别，可不用配置
+    content-type: text/html
+    #开发配置为false，避免修改模板还要重启服务器
+    cache: false
+    #配置模板路径，默认是templates,可以不用配置
+    prefix: classpath:/templates/
+    suffix: .html
+
+  #Spring boot视图配置
+  mvc:
+    view:
+      prefix: /WEB-INF/
+      suffix: .jsp
+  #静态文件访问配置
+  static-path-pattern: /static/**
+
+mybatis:
+  type-aliases-package: com.zvx.vlrecv.vlrecv.dao
+  mapper-locations: classpath:/mappers/*/*Mapper.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    default-fetch-size: 500
+    default-statement-timeout: 80
+

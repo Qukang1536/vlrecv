@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zvx.vlrecv.vlrecv.dao.file.RecvAgentMapper" >
+  <resultMap id="BaseResultMap" type="com.zvx.vlrecv.vlrecv.entity.file.RecvAgent" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="agent_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="display_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="computer_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ip" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="mac" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="operating_system" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="reg_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="active_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="agent_version" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, agent_id, display_name, computer_name, ip, mac, operating_system, reg_time, active_time, 
+    agent_version
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from recv_agent
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from recv_agent
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zvx.vlrecv.vlrecv.entity.file.RecvAgent" >
+    insert into recv_agent (id, agent_id, display_name, 
+      computer_name, ip, mac, 
+      operating_system, reg_time, active_time, 
+      agent_version)
+    values (#{id,jdbcType=INTEGER}, #{agentId,jdbcType=VARCHAR}, #{displayName,jdbcType=VARCHAR}, 
+      #{computerName,jdbcType=VARCHAR}, #{ip,jdbcType=VARCHAR}, #{mac,jdbcType=VARCHAR}, 
+      #{operatingSystem,jdbcType=VARCHAR}, #{regTime,jdbcType=TIMESTAMP}, #{activeTime,jdbcType=TIMESTAMP}, 
+      #{agentVersion,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zvx.vlrecv.vlrecv.entity.file.RecvAgent" >
+    insert into recv_agent
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="agentId != null" >
+        agent_id,
+      </if>
+      <if test="displayName != null" >
+        display_name,
+      </if>
+      <if test="computerName != null" >
+        computer_name,
+      </if>
+      <if test="ip != null" >
+        ip,
+      </if>
+      <if test="mac != null" >
+        mac,
+      </if>
+      <if test="operatingSystem != null" >
+        operating_system,
+      </if>
+      <if test="regTime != null" >
+        reg_time,
+      </if>
+      <if test="activeTime != null" >
+        active_time,
+      </if>
+      <if test="agentVersion != null" >
+        agent_version,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="agentId != null" >
+        #{agentId,jdbcType=VARCHAR},
+      </if>
+      <if test="displayName != null" >
+        #{displayName,jdbcType=VARCHAR},
+      </if>
+      <if test="computerName != null" >
+        #{computerName,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null" >
+        #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="mac != null" >
+        #{mac,jdbcType=VARCHAR},
+      </if>
+      <if test="operatingSystem != null" >
+        #{operatingSystem,jdbcType=VARCHAR},
+      </if>
+      <if test="regTime != null" >
+        #{regTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="activeTime != null" >
+        #{activeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="agentVersion != null" >
+        #{agentVersion,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zvx.vlrecv.vlrecv.entity.file.RecvAgent" >
+    update recv_agent
+    <set >
+      <if test="agentId != null" >
+        agent_id = #{agentId,jdbcType=VARCHAR},
+      </if>
+      <if test="displayName != null" >
+        display_name = #{displayName,jdbcType=VARCHAR},
+      </if>
+      <if test="computerName != null" >
+        computer_name = #{computerName,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null" >
+        ip = #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="mac != null" >
+        mac = #{mac,jdbcType=VARCHAR},
+      </if>
+      <if test="operatingSystem != null" >
+        operating_system = #{operatingSystem,jdbcType=VARCHAR},
+      </if>
+      <if test="regTime != null" >
+        reg_time = #{regTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="activeTime != null" >
+        active_time = #{activeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="agentVersion != null" >
+        agent_version = #{agentVersion,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zvx.vlrecv.vlrecv.entity.file.RecvAgent" >
+    update recv_agent
+    set agent_id = #{agentId,jdbcType=VARCHAR},
+      display_name = #{displayName,jdbcType=VARCHAR},
+      computer_name = #{computerName,jdbcType=VARCHAR},
+      ip = #{ip,jdbcType=VARCHAR},
+      mac = #{mac,jdbcType=VARCHAR},
+      operating_system = #{operatingSystem,jdbcType=VARCHAR},
+      reg_time = #{regTime,jdbcType=TIMESTAMP},
+      active_time = #{activeTime,jdbcType=TIMESTAMP},
+      agent_version = #{agentVersion,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="RecvAll" resultMap="BaseResultMap">
+    select * from recv_agent
+  </select>
+</mapper>

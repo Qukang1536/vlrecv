@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zvx.vlrecv.vlrecv.dao.file.RecvClientMapper" >
+  <resultMap id="BaseResultMap" type="com.zvx.vlrecv.vlrecv.entity.file.RecvClient" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="plan_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="agent_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="addtime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="updatetime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.zvx.vlrecv.vlrecv.entity.file.RecvClient" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="plan_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="agent_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="addtime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="updatetime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="content" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
+      <arg column="planname" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="displayname" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, plan_id, agent_id, addtime, updatetime
+  </sql>
+  <sql id="Blob_Column_List" >
+    content
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from recv_plan_client
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from recv_plan_client
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zvx.vlrecv.vlrecv.entity.file.RecvClient" >
+    insert into recv_plan_client (id, plan_id, agent_id, 
+      addtime, updatetime, content
+      )
+    values (#{id,jdbcType=INTEGER}, #{planId,jdbcType=INTEGER}, #{agentId,jdbcType=VARCHAR}, 
+      #{addtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}, #{content,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zvx.vlrecv.vlrecv.entity.file.RecvClient" >
+    insert into recv_plan_client
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="planId != null" >
+        plan_id,
+      </if>
+      <if test="agentId != null" >
+        agent_id,
+      </if>
+      <if test="addtime != null" >
+        addtime,
+      </if>
+      <if test="updatetime != null" >
+        updatetime,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="planId != null" >
+        #{planId,jdbcType=INTEGER},
+      </if>
+      <if test="agentId != null" >
+        #{agentId,jdbcType=VARCHAR},
+      </if>
+      <if test="addtime != null" >
+        #{addtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zvx.vlrecv.vlrecv.entity.file.RecvClient" >
+    update recv_plan_client
+    <set >
+      <if test="planId != null" >
+        plan_id = #{planId,jdbcType=INTEGER},
+      </if>
+      <if test="agentId != null" >
+        agent_id = #{agentId,jdbcType=VARCHAR},
+      </if>
+      <if test="addtime != null" >
+        addtime = #{addtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.zvx.vlrecv.vlrecv.entity.file.RecvClient" >
+    update recv_plan_client
+    set plan_id = #{planId,jdbcType=INTEGER},
+      agent_id = #{agentId,jdbcType=VARCHAR},
+      addtime = #{addtime,jdbcType=TIMESTAMP},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zvx.vlrecv.vlrecv.entity.file.RecvClient" >
+    update recv_plan_client
+    set plan_id = #{planId,jdbcType=INTEGER},
+      agent_id = #{agentId,jdbcType=VARCHAR},
+      addtime = #{addtime,jdbcType=TIMESTAMP},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="findAll" resultMap="ResultMapWithBLOBs">
+    /*select * from recv_plan_client*/
+    select c.id, c.plan_id, p.name as planname,
+    c.agent_id, a.display_name as displayname,
+    c.addtime, c.updatetime, c.content
+    from recv_plan_client c, recv_plan p, recv_agent a
+    where c.plan_id = p.id
+    and c.agent_id = a.mac
+  </select>
+</mapper>

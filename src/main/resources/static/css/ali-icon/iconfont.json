@@ -1,0 +1,58 @@
+{
+  "id": "1569339",
+  "name": "二维码_仪表盘",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "100738",
+      "name": "相机",
+      "font_class": "xiangji",
+      "unicode": "e62b",
+      "unicode_decimal": 58923
+    },
+    {
+      "icon_id": "807967",
+      "name": "统计",
+      "font_class": "tongji",
+      "unicode": "e631",
+      "unicode_decimal": 58929
+    },
+    {
+      "icon_id": "1045413",
+      "name": "cpu",
+      "font_class": "cpu",
+      "unicode": "e641",
+      "unicode_decimal": 58945
+    },
+    {
+      "icon_id": "1301372",
+      "name": "时间",
+      "font_class": "shijian",
+      "unicode": "e65f",
+      "unicode_decimal": 58975
+    },
+    {
+      "icon_id": "2166872",
+      "name": "显示器",
+      "font_class": "xianshiqi",
+      "unicode": "e6b2",
+      "unicode_decimal": 59058
+    },
+    {
+      "icon_id": "7461696",
+      "name": "硬盘",
+      "font_class": "yingpan",
+      "unicode": "e63b",
+      "unicode_decimal": 58939
+    },
+    {
+      "icon_id": "10809949",
+      "name": "存储 内存卡",
+      "font_class": "changyongtubiao-xianxingdaochu-zhuanqu-",
+      "unicode": "e759",
+      "unicode_decimal": 59225
+    }
+  ]
+}
