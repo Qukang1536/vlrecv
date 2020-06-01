@@ -36,6 +36,7 @@ public class LoginController {
         if(username==null && password==null){
             return "login";
         }
+        System.out.println("加油1111");
         if(user!=null){
             jsonData = new JsonData(0, "登录成功", user);
         }else{
