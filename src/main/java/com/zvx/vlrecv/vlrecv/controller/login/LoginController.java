@@ -37,6 +37,7 @@ public class LoginController {
             return "login";
         }
         System.out.println("加油1111");
+        System.out.println("舒服了111111");
         if(user!=null){
             jsonData = new JsonData(0, "登录成功", user);
         }else{
